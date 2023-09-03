@@ -47,7 +47,7 @@ function ForgetPasswordReset() {
 
       router.push('/login');
     }
-  }, [isError, isSuccess, error, data]);
+  }, [isError, isSuccess, error, data, router]);
 
   return (
     <>

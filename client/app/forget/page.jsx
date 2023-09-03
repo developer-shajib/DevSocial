@@ -36,7 +36,7 @@ function Forget() {
       createToast(data.message, 'success');
       setInput({ ...input, email: '' });
     }
-  }, [isError, isSuccess, error, data]);
+  }, [isError, isSuccess, error, data, input]);
 
   return (
     <>

@@ -18,7 +18,7 @@ export default function Home() {
     if (isSuccess) {
       dispatch(getUserData({ user: data?.user, users: data?.users, posts: data?.posts }));
     }
-  }, [dispatch, data]);
+  }, [dispatch, data, isError, error, isSuccess]);
 
   return (
     <>

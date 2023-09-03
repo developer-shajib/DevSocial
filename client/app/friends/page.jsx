@@ -33,7 +33,7 @@ const Friends = () => {
     if (isSuccess) {
       dispatch(getUserData({ user: data?.user, users: data?.users, posts: data?.posts }));
     }
-  }, [dispatch, data]);
+  }, [dispatch, data, error, isError, isSuccess]);
 
   return (
     <>
@@ -44,7 +44,9 @@ const Friends = () => {
 
           <div className='flex gap-4 flex-wrap flex-row '>
             {withoutMe?.map((item) => (
-              <div className='card w-60 bg-base-100 shadow-xl'>
+              <div
+                className='card w-60 bg-base-100 shadow-xl'
+                key={item._id}>
                 <Link href={`/friends/${item._id}`}>
                   <figure>
                     {item?.photo ? (

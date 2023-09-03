@@ -53,6 +53,7 @@ const LeftSideBar = () => {
                       width={96}
                       height={96}
                       className='w-24 h-24 rounded-md mt-2 cursor-pointer'
+                      alt='avatar'
                     />
                   </div>
                 ))}

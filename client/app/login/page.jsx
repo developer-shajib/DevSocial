@@ -43,7 +43,7 @@ function Login() {
       dispatch(getUserData({ user: data?.user, users: data?.users, posts: data?.posts }));
       router.push('/');
     }
-  }, [dispatch, isError, isSuccess, error]);
+  }, [dispatch, isError, isSuccess, error, data, router]);
 
   return (
     <>
@@ -110,7 +110,7 @@ function Login() {
               Sign in with Google
             </button>
             <div className='text-center text-gray-400'>
-              Dont'have an account?
+              {`Dont'have an account?`}
               <Link
                 href='/register'
                 className='font-bold text-blue-900 ml-2 underline hover:text-red-700 transition'>

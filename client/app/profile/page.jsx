@@ -38,7 +38,7 @@ function Profile() {
     if (isSuccess) {
       dispatch(getUserData({ user: data?.user, users: data?.users, posts: data?.posts }));
     }
-  }, [dispatch, data, isError, isSuccess]);
+  }, [dispatch, data, isError, isSuccess, error]);
   return (
     <>
       <Header />

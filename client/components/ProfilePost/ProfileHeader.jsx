@@ -107,7 +107,7 @@ function ProfileHeader() {
       createToast(data.message, 'success');
       setIsEditModalOpen(false);
     }
-  }, [user, isError, error, isSuccess]);
+  }, [user, isError, error, isSuccess, data]);
 
   return (
     <div>
