@@ -42,7 +42,7 @@ const CreatePost = () => {
 
   useEffect(() => {
     if (isError) {
-      createToast(error?message);
+      createToast(error?.message);
     }
     if (isSuccess) {
       createToast(data?.message, 'success');
