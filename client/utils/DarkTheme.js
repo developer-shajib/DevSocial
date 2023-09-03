@@ -1,6 +1,5 @@
 import { BsFillSunFill, BsFillMoonStarsFill } from 'react-icons/bs';
 import { BiDesktop } from 'react-icons/bi';
-import { useEffect } from 'react';
 
 export const options = [
   {

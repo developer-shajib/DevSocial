@@ -12,7 +12,7 @@ import createToast from '@/utils/createToast.jsx';
 import { useSelector } from 'react-redux';
 import { getAllAuthState } from '@/features/auth/authSlice.js';
 import { useEffect, useState } from 'react';
-import { onWindowMatch, options } from '@/utils/DarkTheme.js';
+import { onWindowMatch } from '@/utils/DarkTheme.js';
 
 function Header() {
   const [logout, { isSuccess, isError, error, isLoading }] = useLogoutMutation();
@@ -56,15 +56,17 @@ function Header() {
     }
   }, [theme]);
 
-  window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change', (e) => {
-    if (!('theme' in localStorage)) {
-      if (e.matches) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
+  if (typeof window !== 'undefined') {
+    window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change', (e) => {
+      if (!('theme' in localStorage)) {
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
       }
-    }
-  });
+    });
+  }
   return (
     <>
       <div className='navbar bg-base-100 dark:bg-slate-500 shadow-2xl w-full px-28 '>
