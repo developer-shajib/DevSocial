@@ -15,7 +15,7 @@ const Friends = () => {
   const { data, isLoading, isError, error, isSuccess } = useMeQuery();
   const dispatch = useDispatch();
   const { users, user } = useSelector(getAllAuthState);
-  const withoutMe = users?.filter((item) => item._id != user._id);
+  const withoutMe = users?.filter((item) => item._id != user?._id);
   const [profileUpdate] = useProfileUpdateMutation();
 
   // <!-- handle follow button -->
@@ -28,7 +28,7 @@ const Friends = () => {
 
   useEffect(() => {
     if (isError) {
-      createToast(error.message);
+      createToast(error?.message);
     }
     if (isSuccess) {
       dispatch(getUserData({ user: data?.user, users: data?.users, posts: data?.posts }));
@@ -46,8 +46,8 @@ const Friends = () => {
             {withoutMe?.map((item) => (
               <div
                 className='card w-60 bg-base-100 shadow-xl'
-                key={item._id}>
-                <Link href={`/friends/${item._id}`}>
+                key={item?._id}>
+                <Link href={`/friends/${item?._id}`}>
                   <figure>
                     {item?.photo ? (
                       <Image
@@ -73,17 +73,17 @@ const Friends = () => {
                     className='card-title hover:text-red-500 tracking-wide transition-all duration-300'>
                     {item?.username}
                   </Link>
-                  <p>{item?.followers.length} followers</p>
+                  <p>{item?.followers?.length} followers</p>
                   <div className='card-actions justify-end'>
                     {item?.followers?.find((followerItem) => followerItem._id == user?._id) ? (
                       <button
-                        onClick={() => handleFollowBtn(item._id)}
+                        onClick={() => handleFollowBtn(item?._id)}
                         className='w-full bg-red-500 text-white rounded-md py-2 hover:bg-green-400 transition-all duration-300'>
                         Unfollow
                       </button>
                     ) : (
                       <button
-                        onClick={() => handleFollowBtn(item._id)}
+                        onClick={() => handleFollowBtn(item?._id)}
                         className='w-full bg-blue-400 text-white rounded-md py-2 hover:bg-green-400 transition-all duration-300'>
                         Follow
                       </button>

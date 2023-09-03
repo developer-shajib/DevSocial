@@ -17,7 +17,7 @@ const SingleFriendPage = () => {
 
   useEffect(() => {
     if (isError) {
-      createToast(error.message);
+      createToast(error?.message);
     }
     if (isSuccess) {
       dispatch(getUserData({ user: data?.user, users: data?.users, posts: data?.posts }));

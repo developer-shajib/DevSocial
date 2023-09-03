@@ -8,7 +8,6 @@ import Input from '@/components/Input.jsx';
 import { useEffect, useState } from 'react';
 import createToast from '@/utils/createToast.jsx';
 import { useRouter } from 'next/navigation.js';
-import BounceLoader from 'react-spinners/BounceLoader';
 import { useLoginMutation } from '@/features/auth/authApiSlice.js';
 import { useDispatch } from 'react-redux';
 import { getUserData } from '@/features/auth/authSlice.js';
@@ -36,10 +35,10 @@ function Login() {
 
   useEffect(() => {
     if (isError) {
-      createToast(error.data.message);
+      createToast(error?.data?.message);
     }
     if (isSuccess) {
-      createToast(data.message, 'success');
+      createToast(data?.message, 'success');
       dispatch(getUserData({ user: data?.user, users: data?.users, posts: data?.posts }));
       router.push('/');
     }

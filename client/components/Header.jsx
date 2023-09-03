@@ -29,7 +29,7 @@ function Header() {
     router.push('/login');
   }
   if (isError) {
-    createToast(error.message);
+    createToast(error?.message);
   }
 
   // <!-- dark mode -->

@@ -39,11 +39,11 @@ function ForgetPasswordReset() {
 
   useEffect(() => {
     if (isError) {
-      createToast(error.data.message);
+      createToast(error?.data?.message);
       router.push('/forget');
     }
     if (isSuccess) {
-      createToast(data.message, 'success');
+      createToast(data?.message, 'success');
 
       router.push('/login');
     }

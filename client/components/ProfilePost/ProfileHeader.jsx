@@ -101,10 +101,10 @@ function ProfileHeader() {
 
   useEffect(() => {
     if (isError) {
-      createToast(error.message);
+      createToast(error?.message);
     }
     if (isSuccess) {
-      createToast(data.message, 'success');
+      createToast(data?.message, 'success');
       setIsEditModalOpen(false);
     }
   }, [user, isError, error, isSuccess, data]);

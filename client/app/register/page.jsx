@@ -35,10 +35,10 @@ function Register() {
 
   useEffect(() => {
     if (isError) {
-      createToast(error.data.message);
+      createToast(error?.data?.message);
     }
     if (isSuccess) {
-      createToast(data.message, 'success');
+      createToast(data?.message, 'success');
       setInput({
         username: '',
         email: '',

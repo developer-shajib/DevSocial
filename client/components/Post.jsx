@@ -43,7 +43,7 @@ const Post = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      createToast(data.message, 'success');
+      createToast(data?.message, 'success');
     }
     if (isError) {
       createToast(error);
@@ -75,7 +75,7 @@ const Post = () => {
                     href={item?.postedUserId?._id == user?._id ? `/profile` : `/friends/${item?.postedUserId?._id}`}>
                     {item?.postedUserId?.username}
                   </Link>
-                  <span className='text-sm text-slate-400 dark:text-slate-300 duration-200'>{timeAgo(new Date(item.createdAt))}</span>
+                  <span className='text-sm text-slate-400 dark:text-slate-300 duration-200'>{timeAgo(new Date(item?.createdAt))}</span>
                 </div>
               </div>
 
@@ -98,13 +98,13 @@ const Post = () => {
               </div>
             </div>
 
-            <p className='leading-tight py-4 dark:text-slate-200 duration-200'>{item.text}</p>
+            <p className='leading-tight py-4 dark:text-slate-200 duration-200'>{item?.text}</p>
 
             <Image
               className='bg-cover w-full'
               width={100}
               height={100}
-              src={item.photos[0]}
+              src={item?.photos[0] || Avatar}
               alt='post_name'
             />
 
@@ -112,22 +112,22 @@ const Post = () => {
             <div className='flex flex-col border-t-2 border-slate-200 dark:border-slate-400 duration-200 py-4 w-full'>
               <div className='flex items-center justify-between w-full border-b-2 border-slate-200 dark:border-slate-400 duration-200 mb-2 pb-4'>
                 <button className='flex gap-2 items-center dark:text-slate-200 duration-200'>
-                  <span>{item.like.length} like</span>
+                  <span>{item?.like?.length} like</span>
                 </button>
 
                 <label
                   htmlFor={item?._id}
                   className='hover:text-blue-400 dark:text-slate-200 duration-200'>
-                  {item.comment.length} comment
+                  {item?.comment?.length} comment
                 </label>
               </div>
 
               <div className='flex justify-between items-center mb-2'>
-                {/* item?.followers?.find((followerItem) => followerItem._id == user?._id) */}
-                {item?.like?.find((likeItem) => likeItem._id == user?._id) ? (
+             
+                {item.like?.find((likeItem) => likeItem._id == user?._id) ? (
                   <>
                     <button
-                      onClick={() => handleLikeButton(item._id)}
+                      onClick={() => handleLikeButton(item?._id)}
                       className='w-1/3 hover:bg-slate-200 transition-all duration-300 flex gap-2 items-center  justify-center rounded-lg py-2 hover:dark:bg-slate-400'>
                       <span className='text-blue-500'>
                         <AiFillLike />
@@ -138,7 +138,7 @@ const Post = () => {
                 ) : (
                   <>
                     <button
-                      onClick={() => handleLikeButton(item._id)}
+                      onClick={() => handleLikeButton(item?._id)}
                       className='w-1/3 hover:bg-slate-200 transition-all duration-300 flex gap-2 items-center  justify-center rounded-lg py-2 dark:border-slate-400 hover:dark:border-slate-200 dark:text-slate-200 hover:dark:bg-slate-400'>
                       <span>
                         <AiFillLike />
@@ -148,7 +148,7 @@ const Post = () => {
                   </>
                 )}
                 <label
-                  htmlFor={item._id}
+                  htmlFor={item?._id}
                   className='w-1/3 hover:bg-slate-200 transition-all duration-300 flex gap-2 items-center  justify-center rounded-lg py-2  dark:border-slate-400 hover:dark:border-slate-200 dark:text-slate-200 hover:dark:bg-slate-400'>
                   <span>
                     <FaRegCommentAlt />
@@ -158,7 +158,7 @@ const Post = () => {
                 {/* <!-- Comment box modal --> */}
                 <input
                   type='checkbox'
-                  id={item._id}
+                  id={item?._id}
                   className='modal-toggle'
                 />
                 <div className='modal '>
@@ -169,14 +169,14 @@ const Post = () => {
                       {item.comment?.map((commentItem) => (
                         <div
                           className='bg-slate-200 gap-2 border-2 rounded-lg p-2'
-                          key={commentItem._id}>
+                          key={commentItem?._id}>
                           <div className='flex gap-4 items-center'>
-                            {commentItem.commentedUserId?.photo ? (
+                            {commentItem?.commentedUserId?.photo ? (
                               <Image
                                 className='w-10 h-10 rounded-full'
                                 width={40}
                                 height={40}
-                                src={commentItem.commentedUserId?.photo}
+                                src={commentItem?.commentedUserId?.photo}
                                 alt='avatar'
                               />
                             ) : (
@@ -191,8 +191,8 @@ const Post = () => {
 
                             <div className='flex flex-col'>
                               <div className='flex gap-4'>
-                                <p className='font-bold'>{commentItem.commentedUserId?.username}</p>
-                                <span className='text-sm md:text-base'>{timeAgo(new Date(commentItem.createdAt))}</span>
+                                <p className='font-bold'>{commentItem?.commentedUserId?.username}</p>
+                                <span className='text-sm md:text-base'>{timeAgo(new Date(commentItem?.createdAt))}</span>
                               </div>
                               <p className='text-slate-600 text-sm md:text-base'>{commentItem?.text}</p>
                             </div>
@@ -203,7 +203,7 @@ const Post = () => {
                   </div>
                   <label
                     className='modal-backdrop'
-                    htmlFor={item._id}>
+                    htmlFor={item?._id}>
                     Close
                   </label>
                 </div>
@@ -219,7 +219,7 @@ const Post = () => {
               {/* <!-- comment form --> */}
               <form
                 action=''
-                onSubmit={(event) => handleFormSubmit(event, item._id)}>
+                onSubmit={(event) => handleFormSubmit(event, item?._id)}>
                 <div className='flex items-center justify-between gap-2 border-t-2 border-slate-200 mb-2 pt-4'>
                   {user?.photo ? (
                     <Image

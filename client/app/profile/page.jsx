@@ -29,11 +29,11 @@ function Profile() {
   const { data, isSuccess, isError, error } = useMeQuery();
   const dispatch = useDispatch();
   const { users, user } = useSelector(getAllAuthState);
-  const withoutMe = users?.filter((item) => item._id != user._id);
+  const withoutMe = users?.filter((item) => item._id != user?._id);
 
   useEffect(() => {
     if (isError) {
-      createToast(error.message);
+      createToast(error?.message);
     }
     if (isSuccess) {
       dispatch(getUserData({ user: data?.user, users: data?.users, posts: data?.posts }));

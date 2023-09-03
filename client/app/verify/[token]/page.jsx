@@ -8,15 +8,15 @@ import { useEffect } from 'react';
 const VerifyToken = () => {
   const { token } = useParams();
   const router = useRouter();
-  const { data, isSuccess, isError, error, isLoading } = useRegisterVerifyTokenQuery(token);
+  const { data, isSuccess, isError, error } = useRegisterVerifyTokenQuery(token);
 
   useEffect(() => {
     if (isSuccess) {
-      createToast(data.message, 'success');
+      createToast(data?.message, 'success');
       router.push('/');
     }
     if (isError) {
-      createToast(error.message);
+      createToast(error?.message);
       router.push('/login');
     }
   }, [isSuccess, data, isError, error, router]);

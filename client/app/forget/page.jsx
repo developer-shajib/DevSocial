@@ -30,10 +30,10 @@ function Forget() {
 
   useEffect(() => {
     if (isError) {
-      createToast(error.data.message);
+      createToast(error?.data?.message);
     }
     if (isSuccess) {
-      createToast(data.message, 'success');
+      createToast(data?.message, 'success');
       setInput({ ...input, email: '' });
     }
   }, [isError, isSuccess, error, data, input]);

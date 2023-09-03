@@ -10,7 +10,7 @@ import createToast from '@/utils/createToast.jsx';
 
 const RightSideBar = () => {
   const { user, users } = useSelector(getAllAuthState);
-  const withoutMe = users?.filter((item) => item._id != user._id);
+  const withoutMe = users?.filter((item) => item._id != user?._id);
   const [profileUpdate, { data, isError, isSuccess, error, isLoading }] = useProfileUpdateMutation();
 
   // <!-- handle follow button -->
@@ -23,7 +23,7 @@ const RightSideBar = () => {
 
   useEffect(() => {
     if (isError) {
-      createToast(error.message);
+      createToast(error?.message);
     }
   }, [isError, error]);
 
@@ -83,7 +83,7 @@ const RightSideBar = () => {
                 <div className='flex items-center gap-1 md:gap-6'>
                   <div className='avatar online placeholder hover:outline-2 outline-green-500'>
                     <div className='bg-neutral-focus text-neutral-content rounded-full w-8 '>
-                      <Link href={`/friends/${item._id}`}>
+                      <Link href={`/friends/${item?._id}`}>
                         {item?.photo ? (
                           <Image
                             className='rounded-full h-9 w-9'
@@ -107,19 +107,19 @@ const RightSideBar = () => {
 
                   <div className='flex items-start flex-col lg:flex-row  lg:justify-between lg:items-center w-full'>
                     <Link
-                      href={`/friends/${item._id}`}
+                      href={`/friends/${item?._id}`}
                       className='text-sm font-medium items-center hover:text-blue-600 transition-all duration-300 hover:underline dark:text-slate-200'>
-                      {item.username}
+                      {item?.username}
                     </Link>
                     {item?.followers?.find((followerItem) => followerItem._id == user?._id) ? (
                       <button
-                        onClick={() => handleFollowBtn(item._id)}
+                        onClick={() => handleFollowBtn(item?._id)}
                         className='text-sm bg-error text-white rounded px-3 py-1'>
                         Unfollow
                       </button>
                     ) : (
                       <button
-                        onClick={() => handleFollowBtn(item._id)}
+                        onClick={() => handleFollowBtn(item?._id)}
                         className='text-sm bg-success text-white rounded px-3 py-1 hover:bg-blue-700 transition-all shadow-lg'>
                         Follow
                       </button>

@@ -10,7 +10,7 @@ import createToast from '@/utils/createToast.jsx';
 
 function Post() {
   const { user, posts } = useSelector(getAllAuthState);
-  const allMyPost = posts?.filter((item) => item.postedUserId._id == user._id);
+  const allMyPost = posts?.filter((item) => item.postedUserId._id == user?._id);
   const [deletePost, { data, isError, isSuccess, error }] = useDeletePostMutation();
 
   // <!-- handle delete button -->
@@ -20,10 +20,10 @@ function Post() {
 
   useEffect(() => {
     if (isError) {
-      createToast(error.message);
+      createToast(error?.message);
     }
     if (isSuccess) {
-      createToast(data.success);
+      createToast(data?.success);
     }
   }, [isError, error, isSuccess, data]);
 
@@ -39,9 +39,9 @@ function Post() {
             <div className='flex items-center justify-between w-full'>
               <div className='flex space-x-2 items-center'>
                 <div className='relative'>
-                  {item.postedUserId?.photo ? (
+                  {item?.postedUserId?.photo ? (
                     <Image
-                      src={item.postedUserId?.photo}
+                      src={item?.postedUserId?.photo}
                       alt='avatar'
                       className='w-10 h-10 rounded-full'
                       width={40}
@@ -60,7 +60,7 @@ function Post() {
                   <span className='bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2'></span>
                 </div>
                 <div>
-                  <div className='font-semibold'>{item.postedUserId?.username}</div>
+                  <div className='font-semibold'>{item?.postedUserId?.username}</div>
                   <span className='text-sm text-gray-500'>10h</span>
                 </div>
               </div>
