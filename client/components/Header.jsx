@@ -33,7 +33,7 @@ function Header() {
   }
 
   // <!-- dark mode -->
-  const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'system');
+  const [theme, setTheme] = useState(typeof window !== 'undefined' && localStorage.getItem('theme') ? localStorage.getItem('theme') : 'system');
 
   onWindowMatch();
 
@@ -41,16 +41,16 @@ function Header() {
     switch (theme) {
       case 'dark':
         document.documentElement.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
+        typeof window !== 'undefined' && localStorage.setItem('theme', 'dark');
         break;
 
       case 'light':
         document.documentElement.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
+        typeof window !== 'undefined' && localStorage.setItem('theme', 'light');
         break;
 
       default:
-        localStorage.removeItem('theme');
+        typeof window !== 'undefined' && localStorage.removeItem('theme');
         onWindowMatch();
         break;
     }
