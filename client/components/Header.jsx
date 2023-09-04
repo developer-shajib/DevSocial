@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react';
 import { onWindowMatch } from '@/utils/DarkTheme.js';
 
 function Header() {
-  const [logout, { isSuccess, isError, error, isLoading }] = useLogoutMutation();
+  const [logout, { isSuccess, isError, error }] = useLogoutMutation();
   const router = useRouter();
   const { user } = useSelector(getAllAuthState);
 
@@ -27,6 +27,7 @@ function Header() {
   if (isSuccess) {
     createToast('Logged out', 'success');
     router.push('/login');
+    document.cookie = 'aToken=';
   }
   if (isError) {
     createToast(error?.message);
