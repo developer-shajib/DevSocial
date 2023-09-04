@@ -27,7 +27,7 @@ function Header() {
   if (isSuccess) {
     createToast('Logged out', 'success');
     router.push('/login');
-    document.cookie = 'aToken=';
+    // document.cookie = 'aToken=';
   }
   if (isError) {
     createToast(error?.message);

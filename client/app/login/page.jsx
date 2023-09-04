@@ -41,7 +41,7 @@ function Login() {
       createToast(data?.message, 'success');
       dispatch(getUserData({ user: data?.user, users: data?.users, posts: data?.posts }));
       router.push('/');
-      document.cookie = `aToken=${data?.token}`;
+      // document.cookie = `aToken=${data?.token}`;
     }
   }, [dispatch, isError, isSuccess, error, data, router]);
 
