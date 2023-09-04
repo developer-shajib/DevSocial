@@ -8,8 +8,7 @@ const authApiSlice = apiSlice.injectEndpoints({
         url: '/api/v1/auth/login',
         method: 'POST',
         body: data
-      }),
-      invalidatesTags: ['Me']
+      })
     }),
     logout: builder.mutation({
       query: () => ({

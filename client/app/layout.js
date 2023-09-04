@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
       className='dark'>
       <body className={`${gluten.variable} ${inter.className} dark:bg-slate-900 duration-200  w-full`}>
         <Provider store={store}>
-          {children} <ToastContainer />{' '}
+          {children} <ToastContainer />
         </Provider>
       </body>
     </html>

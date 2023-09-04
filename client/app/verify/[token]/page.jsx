@@ -14,6 +14,7 @@ const VerifyToken = () => {
     if (isSuccess) {
       createToast(data?.message, 'success');
       router.push('/');
+      document.cookie = `aToken=${data.token}`;
     }
     if (isError) {
       createToast(error?.message);
