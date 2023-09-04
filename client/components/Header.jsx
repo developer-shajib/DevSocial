@@ -31,7 +31,7 @@ function Header() {
     router.push('/login');
     // document.cookie = 'aToken=';
 
-    cookies.set('aToken', data?.token);
+    cookies.remove('aToken', data?.token);
   }
   if (isError) {
     createToast(error?.message);
