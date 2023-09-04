@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation.js';
 import { useLoginMutation } from '@/features/auth/authApiSlice.js';
 import { useDispatch } from 'react-redux';
 import { getUserData } from '@/features/auth/authSlice.js';
+import Cookies from 'universal-cookie';
 
 function Login() {
   const [input, setInput] = useState({
@@ -20,6 +21,7 @@ function Login() {
   const [login, { data, isError, isSuccess, error, isLoading }] = useLoginMutation();
   const router = useRouter();
   const dispatch = useDispatch();
+  const cookies = new Cookies();
 
   // <!-- handle input change -->
   const handleInputChange = (e) => {
@@ -42,6 +44,7 @@ function Login() {
       dispatch(getUserData({ user: data?.user, users: data?.users, posts: data?.posts }));
       router.push('/');
       // document.cookie = `aToken=${data?.token}`;
+      cookies.set('aToken', data?.token);
     }
   }, [dispatch, isError, isSuccess, error, data, router]);
 

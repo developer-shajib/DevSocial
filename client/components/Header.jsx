@@ -13,11 +13,13 @@ import { useSelector } from 'react-redux';
 import { getAllAuthState } from '@/features/auth/authSlice.js';
 import { useEffect, useState } from 'react';
 import { onWindowMatch } from '@/utils/DarkTheme.js';
+import Cookies from 'universal-cookie';
 
 function Header() {
   const [logout, { isSuccess, isError, error }] = useLogoutMutation();
   const router = useRouter();
   const { user } = useSelector(getAllAuthState);
+  const cookies = new Cookies();
 
   // <!-- handle logout Btn -->
   const handleLogoutBtn = () => {
@@ -28,6 +30,8 @@ function Header() {
     createToast('Logged out', 'success');
     router.push('/login');
     // document.cookie = 'aToken=';
+
+    cookies.set('aToken', data?.token);
   }
   if (isError) {
     createToast(error?.message);
