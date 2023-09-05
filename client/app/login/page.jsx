@@ -46,7 +46,7 @@ function Login() {
       // document.cookie = `aToken=${data?.token}`;
       cookies.set('aToken', data?.token);
     }
-  }, [dispatch, isError, isSuccess, error, data, router]);
+  }, [dispatch, isError, isSuccess, error, data, router, cookies]);
 
   return (
     <>

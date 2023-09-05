@@ -24,7 +24,7 @@ const VerifyToken = () => {
       createToast(error?.message);
       router.push('/login');
     }
-  }, [isSuccess, data, isError, error, router]);
+  }, [isSuccess, data, isError, error, router, cookies]);
 };
 
 export default VerifyToken;
