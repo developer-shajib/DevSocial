@@ -13,6 +13,11 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.users = action.payload.users;
       state.posts = action.payload.posts;
+    },
+    removeUserData: (state) => {
+      state.user = {};
+      state.users = [];
+      state.posts = [];
     }
   }
 });
@@ -21,7 +26,7 @@ const authSlice = createSlice({
 export const getAllAuthState = (state) => state.userState;
 
 // <!-- export actions -->
-export const { getUserData } = authSlice.actions;
+export const { getUserData, removeUserData } = authSlice.actions;
 
 // <!-- export reducer -->
 export default authSlice.reducer;

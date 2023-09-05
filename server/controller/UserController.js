@@ -99,36 +99,21 @@ export const updateUser = asyncHandler(async (req, res) => {
   if (!req?.body) return res.status(400).json({ message: 'You nothing changed' });
 
   // for isVerified update
-  let isVerified = user.isVerified;
-  if (req.body.isVerified === true) {
-    isVerified = true;
-  } else if (req.body.isVerified === false) {
-    isVerified = false;
-  }
+  let isVerified = req.body?.isVerified || user.isVerified;
 
   // for token update
   let token = user.token;
-  if (req.body.token) {
-    token = req.body.token;
-  } else if (req.body.token === '' || null || false) {
+  if (req.body.token === '' || null || false) {
     token = null;
+  } else if (req.body.token) {
+    token = req.body.token;
   }
 
   // for status update
-  let status = user.status;
-  if (req.body.status === true) {
-    status = true;
-  } else if (req.body.status === false) {
-    status = false;
-  }
+  let status = req.body.status || user.status;
 
   // for trash update
-  let trash = user.trash;
-  if (req.body.trash === true) {
-    trash = true;
-  } else if (req.body.trash === false) {
-    trash = false;
-  }
+  let trash = req.body.trash || user.trash;
 
   // hash password
   let hashPassword = user.password;

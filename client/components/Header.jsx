@@ -9,8 +9,8 @@ import Link from 'next/link.js';
 import { useLogoutMutation } from '@/features/auth/authApiSlice.js';
 import { useRouter } from 'next/navigation.js';
 import createToast from '@/utils/createToast.jsx';
-import { useSelector } from 'react-redux';
-import { getAllAuthState } from '@/features/auth/authSlice.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllAuthState, removeUserData } from '@/features/auth/authSlice.js';
 import { useEffect, useState } from 'react';
 import { onWindowMatch } from '@/utils/DarkTheme.js';
 import Cookies from 'universal-cookie';
@@ -20,6 +20,7 @@ function Header() {
   const router = useRouter();
   const { user } = useSelector(getAllAuthState);
   const cookies = new Cookies();
+  const dispatch = useDispatch();
 
   // <!-- handle logout Btn -->
   const handleLogoutBtn = () => {
@@ -28,10 +29,9 @@ function Header() {
 
   if (isSuccess) {
     createToast('Logged out', 'success');
-    router.push('/login');
-    // document.cookie = 'aToken=';
-
     cookies.remove('aToken');
+    dispatch(removeUserData());
+    router.push('/login');
   }
   if (isError) {
     createToast(error?.message);
