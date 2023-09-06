@@ -219,7 +219,7 @@ export const forgetPassword = asyncHandler(async (req, res) => {
 
   // create verify token and link
   const token = JWT.sign({ _id: user._id, email: user.email }, process.env.EMAIL_VERIFY_TOKEN_SECRET, {
-    expiresIn: '15m'
+    expiresIn: '1d'
   });
 
   const link = `${process.env.BASE_URL}/forget/${token}`;
