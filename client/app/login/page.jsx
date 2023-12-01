@@ -42,9 +42,9 @@ function Login() {
     if (isSuccess) {
       createToast(data?.message, 'success');
       dispatch(getUserData({ user: data?.user, users: data?.users, posts: data?.posts }));
-      router.push('/');
       // document.cookie = `aToken=${data?.token}`;
       cookies.set('aToken', data?.token);
+      router.push('/');
     }
   }, [dispatch, isError, isSuccess, error, data, router, cookies]);
 
@@ -96,7 +96,7 @@ function Login() {
               <button
                 type='submit'
                 className='w-full bg-slate-700 text-white p-2 rounded-lg mb-6 hover:bg-white hover:text-black border hover:border-gray-300 transition flex gap-2 justify-center items-center'>
-                <p>{isLoading || isSuccess ? 'Please wait....' : 'Sign In'}</p>
+                <p>{isLoading ? 'Please wait....' : 'Sign In'}</p>
               </button>
             </form>
 
