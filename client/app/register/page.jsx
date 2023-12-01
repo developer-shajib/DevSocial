@@ -32,6 +32,7 @@ function Register() {
       return createToast('All fields are required!');
     }
 
+    // email validation check
     if (!isEmail(input.email)) return createToast('Provide a valid email address');
     register(input);
   };
