@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import createToast from '@/utils/createToast.jsx';
 import { useRegisterMutation } from '@/features/auth/authApiSlice.js';
 import { useRouter } from 'next/navigation.js';
+import { isEmail } from '@/helpers/checkMail.js';
 
 function Register() {
   const [input, setInput] = useState({
