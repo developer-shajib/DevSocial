@@ -30,6 +30,8 @@ function Register() {
     if (!input.username || !input.email || !input.password) {
       return createToast('All fields are required!');
     }
+
+    if (!isEmail(input.email)) return createToast('Provide a valid email address');
     register(input);
   };
 

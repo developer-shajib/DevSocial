@@ -39,13 +39,17 @@ function Login() {
       createToast(error?.data?.message);
     }
     if (isSuccess) {
+      setInput({
+        email: '',
+        password: ''
+      });
       createToast(data?.message, 'success');
       dispatch(getUserData({ user: data?.user, users: data?.users, posts: data?.posts }));
       // document.cookie = `aToken=${data?.token}`;
       Cookies.set('aToken', data?.token);
       router.push('/');
     }
-  }, [dispatch, isError, isSuccess, error, data, router, Cookies]);
+  }, [dispatch, isError, isSuccess, error, data, router, Cookies, setInput]);
 
   return (
     <>
