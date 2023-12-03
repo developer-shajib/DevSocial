@@ -1,5 +1,5 @@
 // allowed origin
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173', 'https://dev-social-five.vercel.app'];
+const allowedOrigins = ['https://my-dev-social.vercel.app', 'http://localhost:3000', 'http://localhost:5173', 'https://dev-social-five.vercel.app'];
 
 // cors options
 const corsOptions = {
