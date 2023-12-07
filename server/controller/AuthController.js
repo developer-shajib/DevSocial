@@ -67,7 +67,7 @@ export const userLogin = asyncHandler(async (req, res) => {
       httpOnly: false,
       secure: process.env.APP_ENV == 'Development' ? false : true,
       maxAge: parseInt(process.env.COOKIE_EXPIRE),
-      sameSite: 'none'
+      sameSite: 'None'
     })
     .json({ token: accessToken, user, users, posts, message: 'Login success.' });
 });
@@ -196,7 +196,7 @@ export const registerVerifyToken = asyncHandler(async (req, res) => {
           httpOnly: false,
           secure: process.env.APP_ENV == 'Development' ? false : true,
           maxAge: parseInt(process.env.COOKIE_EXPIRE),
-          sameSite: 'none'
+          sameSite: 'None'
         })
         .json({ token: accessToken, user, users, posts, message: 'Account Verify successful.' });
     })

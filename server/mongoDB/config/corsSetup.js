@@ -13,7 +13,7 @@ const corsOptions = {
   // },
   credentials: true,
   optionsSuccessStatus: 200,
-  allowedHeaders: ['Access-Control-Allow-Origin', 'Content-Type', 'Authorization']
+  exposedHeaders: ['set-cookie']
 };
 
 // exports
