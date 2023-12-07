@@ -64,10 +64,10 @@ export const userLogin = asyncHandler(async (req, res) => {
   res
     .status(200)
     .cookie('aToken', accessToken, {
-      httpOnly: true,
-      secure: process.env.APP_ENV == 'Development' ? false : true,
+      httpOnly: false,
+      secure: false,
       maxAge: parseInt(process.env.COOKIE_EXPIRE),
-      sameSite: 'none'
+      sameSite: 'strict'
     })
     .json({ token: accessToken, user, users, posts, message: 'Login success.' });
 });
@@ -193,10 +193,10 @@ export const registerVerifyToken = asyncHandler(async (req, res) => {
       res
         .status(200)
         .cookie('aToken', accessToken, {
-          httpOnly: true,
-          secure: process.env.APP_ENV == 'Development' ? false : true,
+          httpOnly: false,
+          secure: false,
           maxAge: parseInt(process.env.COOKIE_EXPIRE),
-          sameSite: 'none'
+          sameSite: 'strict'
         })
         .json({ token: accessToken, user, users, posts, message: 'Account Verify successful.' });
     })
