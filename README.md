@@ -63,7 +63,8 @@ DevSocial is a professional and feature-rich social networking platform built us
 
 ### You can access the live demo of DevSocial at
 
-- [Live_Link](https://dev-social-five.vercel.app/).
+- [Live_Link](https://my-dev-social.vercel.app/).
+
 - [Video_link](https://www.linkedin.com/posts/developer-shajib_uses-features-activity-7105382804879790080-v3Oj?utm_source=share&utm_medium=member_desktop)
 
 ## Contact
