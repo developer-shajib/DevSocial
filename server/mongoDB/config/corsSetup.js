@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // allowed origin
-const allowedOrigins = [process.env.BASE_URL, 'http://localhost:3000', 'http://localhost:5173', 'https://dev-social-five.vercel.app'];
+const allowedOrigins = [process.env.BASE_URL, 'https://my-dev-social.vercel.app', 'http://localhost:3000', 'http://localhost:5173', 'https://dev-social-five.vercel.app'];
 
 // cors options
 const corsOptions = {
