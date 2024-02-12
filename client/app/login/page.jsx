@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation.js';
 import { useLoginMutation } from '@/features/auth/authApiSlice.js';
 import { useDispatch } from 'react-redux';
 import { getUserData } from '@/features/auth/authSlice.js';
-// import Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 
 function Login() {
   const [input, setInput] = useState({
@@ -39,14 +39,14 @@ function Login() {
       createToast(error?.data?.message);
     }
     if (isSuccess) {
+      if (data?.token) Cookies.set('accessToken', data?.token, { expires: 7, path: '/', secure: true });
       setInput({
         email: '',
         password: ''
       });
-      createToast(data?.message, 'success');
       dispatch(getUserData({ user: data?.user, users: data?.users, posts: data?.posts }));
-      // document.cookie = `aToken=${data?.token}`;
-      // Cookies.set('aToken', data?.token);
+
+      createToast(data?.message, 'success');
       router.push('/');
     }
   }, [dispatch, isError, isSuccess, error, data, router, setInput]);

@@ -2,9 +2,9 @@
 
 import { useRegisterVerifyTokenQuery } from '@/features/auth/authApiSlice.js';
 import createToast from '@/utils/createToast.jsx';
+import Cookies from 'js-cookie';
 import { useParams, useRouter } from 'next/navigation.js';
 import { useEffect } from 'react';
-// import Cookies from 'js-cookie';
 
 const VerifyToken = () => {
   const { token } = useParams();
@@ -13,7 +13,7 @@ const VerifyToken = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      // Cookies.set('aToken', data?.token);
+      if (data?.token) Cookies.set('accessToken', data?.token, { expires: 7, path: '/', secure: true });
       createToast(data?.message, 'success');
       router.push('/');
     }

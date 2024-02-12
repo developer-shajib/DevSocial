@@ -6,7 +6,7 @@ export default function middleware(request) {
 
   const publicPath = path === '/login' || path === '/register' || path === '/verify/:path' || path === '/forget' || path === 'forget/:path';
 
-  const token = request.cookies.get('aToken');
+  const token = request.cookies.get('accessToken');
 
   // <!-- Validation set -->
   if (publicPath && token) {

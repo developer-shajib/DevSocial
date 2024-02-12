@@ -4,11 +4,17 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const apiSlice = createApi({
   tagTypes: ['Me'],
   baseQuery: fetchBaseQuery({
-    baseUrl: ' https://dev-social-s1li.onrender.com',
-    // 'http://localhost:5050',
-    //
+    baseUrl: process.env.NEXT_PUBLIC_API_URL,
     credentials: 'include',
-    withCredentials: true
+    withCredentials: true,
+    prepareHeaders: (headers, { getState }) => {
+      // Add custom headers here
+      const token = getState()?.userState?.token;
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`);
+      }
+      return headers;
+    }
   }),
   endpoints: (build) => ({})
 });

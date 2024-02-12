@@ -4,11 +4,14 @@ import { CreatePost, Header, LeftSideBar, Post, RightSideBar } from '@/component
 import { useMeQuery } from '@/features/auth/authApiSlice.js';
 import { getUserData } from '@/features/auth/authSlice.js';
 import createToast from '@/utils/createToast.jsx';
+import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 export default function Home() {
-  const { data, isLoading, isError, error, isSuccess } = useMeQuery();
+  const token = Cookies.get('accessToken');
+
+  const { data, isLoading, isError, error, isSuccess } = useMeQuery(undefined, { enabled: !token });
   const dispatch = useDispatch();
 
   useEffect(() => {

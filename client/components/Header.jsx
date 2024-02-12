@@ -27,7 +27,7 @@ function Header() {
   };
 
   if (isSuccess) {
-    Cookies.remove('aToken');
+    Cookies.remove('accessToken');
     dispatch(removeUserData());
     createToast('Logged out', 'success');
     router.push('/login');
@@ -37,7 +37,7 @@ function Header() {
   }
 
   // <!-- dark mode -->
-  const [theme, setTheme] = useState(typeof window !== 'undefined' && localStorage.getItem('theme') ? localStorage.getItem('theme') : 'system');
+  const [theme, setTheme] = useState(typeof window !== 'undefined' && localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
 
   onWindowMatch();
 

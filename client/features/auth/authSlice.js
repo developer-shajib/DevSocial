@@ -1,4 +1,7 @@
+'use client';
+
 import { createSlice } from '@reduxjs/toolkit';
+import Cookies from 'js-cookie';
 
 // <!-- auth slice -->
 const authSlice = createSlice({
@@ -6,7 +9,8 @@ const authSlice = createSlice({
   initialState: {
     user: {},
     users: [],
-    posts: []
+    posts: [],
+    token: Cookies.get('accessToken') || null
   },
   reducers: {
     getUserData: (state, action) => {
@@ -18,6 +22,7 @@ const authSlice = createSlice({
       state.user = {};
       state.users = [];
       state.posts = [];
+      state.token = null;
     }
   }
 });
